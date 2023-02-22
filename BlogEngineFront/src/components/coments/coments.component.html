@@ -1,0 +1,15 @@
+<div class="continer">
+    <p *ngIf="!(coments && coments.length)">
+        There are no posts to display
+    </p>
+    
+    <div class="coments" *ngIf="(coments && coments.length)">
+        <ng-container  *ngFor="let item of coments">
+            <div *ngFor="let item2 of posts"> 
+                 <ul  *ngIf="(item2.id == item.id && item.author != item2.author)">
+                    <li >{{item.coment}}</li>
+                 </ul>
+            </div>
+        </ng-container>
+    </div>
+</div>

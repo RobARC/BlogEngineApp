@@ -1,0 +1,31 @@
+.row {
+    display: flex;
+    margin-left: 90px;
+}
+
+.form-control {
+    margin-left: 100px;
+    margin-right: 100px;
+    width: 75%;  
+}
+
+.sr-only{
+    margin-left: 100px;
+}
+
+.btn-default{
+    background-color: gray;
+    color: aliceblue;
+}
+
+.btn-post{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.danger{
+    color: red;
+    margin-left: 100px;
+}
+
+

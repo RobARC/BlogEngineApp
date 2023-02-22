@@ -1,0 +1,25 @@
+<div class="container">
+  <form [formGroup]="checkoutForm" class="form-register" (ngSubmit)="onSubmit()" method="post">
+
+    <h2 class="form-register-heading">Please Sing up</h2>
+
+
+    <label for="UserName" class="sr-only">User Name</label>
+    <input id="userName" type="text" formControlName="userName"  class="form-control" 
+    placeholder="User Name" required>
+
+      <label for="Email" class="sr-only">Email address</label>
+      <input id="Email" type="email" formControlName="email"   class="form-control" placeholder="Email address"
+        required>
+      <label for="Password" class="sr-only">Password</label>
+      <input id="Password" type="password" name="password"   class="form-control" formControlName="password" placeholder="Password" required>
+
+    <label for="Role" class="sr-only">Role</label>
+    <select id="Role" class="form-control Role"  formControlName="role" required>
+      <option *ngFor="let rol of Roles" [value]="rol">{{rol}}</option>
+    </select>
+
+    
+    <button class="btn btn-lg btn-primary btn-block" type="submit" >Sign Up</button>
+  </form>
+</div>

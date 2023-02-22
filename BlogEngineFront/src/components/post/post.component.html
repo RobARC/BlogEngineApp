@@ -1,0 +1,59 @@
+<div class="container">
+    <form [formGroup]="checkoutForm" class="form-post" novalidate (ngSubmit)="onSubmit()" method="post">
+        <fieldset>
+            <div class="tilte form-group"
+                [ngClass]="{'has-error' : (checkoutForm.get('title').touched || checkoutForm.get('title').dirty) && !checkoutForm.get('title').valid}">
+                <label for="title" class="sr-only">Title</label>
+                <input name="title" type="text" id="title" class="form-control" placeholder="Write a Title"
+                    formControlName="title" required >
+                <span class="help-block"
+                    *ngIf="(checkoutForm.get('title').touched || checkoutForm.get('title').dirty) && checkoutForm.get('title').errors">
+                    <span *ngIf="checkoutForm.get('title').errors.required" class="danger">
+                        Field tilte is required
+                    </span>
+                </span>
+            </div>
+            <div class="content form-group"
+                [ngClass]="{'has-error' : (checkoutForm.get('content').touched || checkoutForm.get('content').dirty) && !checkoutForm.get('content').valid}">
+                <label for="content" class="sr-only">Content</label>
+                <textarea name="content" id="content" class="form-control" placeholder="Write here your post"
+                    formControlName="content" required heigth=100px>
+                </textarea>
+                <span class="help-block"
+                    *ngIf="(checkoutForm.get('content').touched || checkoutForm.get('content').dirty) && checkoutForm.get('content').errors">
+                    <span *ngIf="checkoutForm.get('content').errors.required" class="danger">
+                        Field content is required
+                    </span>
+                </span>
+            </div>
+            <div class="tilte form-group"
+                [ngClass]="{'has-error' : (checkoutForm.get('title').touched || checkoutForm.get('title').dirty) && !checkoutForm.get('title').valid}">
+                <label for="author" class="sr-only">Author</label>
+                <input name="author" type="text" id="author" class="form-control" placeholder="Author Name"
+                    formControlName="author" required>
+                <span class="help-block"
+                    *ngIf="(checkoutForm.get('author').touched || checkoutForm.get('author').dirty) && checkoutForm.get('author').errors">
+                    <span *ngIf="checkoutForm.get('title').errors.required" class="danger">
+                        Field Author is required
+                    </span>
+                </span>
+            </div>
+            <label for="content" class="sr-only">Date</label>
+            <input id="createdAt" type="date" class="form-control" />
+            <br>
+            <div class="form-group">
+                <div class="col-md-10 col-md-offset-2">
+                    <span class="btn-post">
+                        <button class="btn btn-primary" type="submit" [disabled]="!checkoutForm.valid">
+                            Save
+                        </button>
+                        &nbsp;
+                        <button class="btn btn-default" type="button" [routerLink]='["/home"]'>
+                            Cancel
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

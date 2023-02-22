@@ -1,0 +1,26 @@
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="header">
+                <div class="header-title ">
+                    <span  type="button" class="home" routerLink="home">
+                        Blog Engine
+                    </span>
+                </div>
+                <div class="header-link ">
+                    <button id="loginButton" class="btn btn-lg btn-primary btn-block" type="button" 
+                        routerLink="login" routerLinkActive="activebutton" (click)="logout">Sign in</button>
+                </div>
+                <div class="header-link ">
+                    <button class="btn btn-lg btn-primary btn-block" type="button"
+                    routerLink="register" routerLinkActive="activebutton"  >Sign up</button>
+                </div>
+                <div class="header-link ">
+                    <button id="logoutButton" class="btn btn-lg btn-primary btn-block" type="button"
+                    routerLink="login" routerLinkActive="activebutton" hidden="true"
+                    (click)="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+</header>

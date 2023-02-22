@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Login {}","map":{"version":3,"mappings":"AAAA,OAAM,MAAOA,KAAK","names":["Login"],"sourceRoot":"","sources":["C:\\Users\\Roberth\\BlogEngineFront\\src\\models\\login.model.ts"],"sourcesContent":["export class Login {\r\n    email!: string;\r\n    password!: string;\r\n  }\r\n"]},"metadata":{},"sourceType":"module","externalDependencies":[]}
