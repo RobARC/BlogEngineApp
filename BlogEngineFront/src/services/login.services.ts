@@ -1,11 +1,12 @@
 import { Injectable, Inject } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { CookieService } from "ngx-cookie-service";
 import { url_api } from "src/app/app-constants";
-import { Observable, BehaviorSubject } from "rxjs";
+import { Observable, throwError } from "rxjs";
 import { LoginInterface } from "src/components/login/login.class";
 import { Router } from "@angular/router";
-import { User } from "src/models/User.model";
+import { catchError } from "rxjs/operators";
+
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -15,10 +16,11 @@ const httpOptions = {
     providedIn: 'root'
   })
   export class LoginService {
+    router!: Router
 
     constructor(private http: HttpClient, 
                   private cookies: CookieService,
-                  private router: Router
+                  
                 ) {}
 
   async LoginUsers(loginInterface: LoginInterface): Promise<Observable<any>>{
@@ -26,6 +28,7 @@ const httpOptions = {
     console.log(loginInterface);
 
     return await this.http.post<any>(`${url_api}/api/Account/Login`, loginInterface, httpOptions)
+                      .pipe(catchError(this.ErrorHandler))
     }
 
     GetToken(){
@@ -34,11 +37,6 @@ const httpOptions = {
 
     GetExpirationToken() {
       return localStorage.getItem('expiration_token');
-    }
-
-    async logout() {
-      localStorage.removeItem('expiration_token');
-      localStorage.removeItem('token');
     }
 
     isLoggedIn(): boolean {
@@ -60,8 +58,12 @@ const httpOptions = {
         return false;
       } else {
         return true;
-        
       }
     }
+
+    ErrorHandler(error: HttpErrorResponse) {
+      //console.log(error.message);
+      alert("Email or password is incorrect, please try again.");
+      return error.message;
   }
- 
+}

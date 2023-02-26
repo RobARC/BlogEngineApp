@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/services/login.services';
 
@@ -9,25 +9,37 @@ import { LoginService } from 'src/services/login.services';
   providers: [LoginService]
   
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
   loginService!: LoginService;
   logoutButton: boolean = false;
-  loginButton: boolean = true;
-  
+  option: any = 0;
 
   constructor(
     private router : Router, 
     loginService: LoginService) 
     { }
+  ngOnInit(): void {
+  }
 
     logout() {
-      this.loginService.logout();
-      this.router.navigate(['/']);
-      this.loginButton = true;
+      console.log('hola');
+      console.log(localStorage);
+      localStorage.removeItem('expiration_token');
+      localStorage.removeItem('token');
+      this.router.navigate(['login']);
+      this.option=0;
     }
 
     loggedIn() {
-     return this.loginService.isLoggedIn();
-     this.logoutButton = false;
+
+     const resp2 = this.loginService.isLoggedIn();
+     console.log(resp2);
+     
+      if (resp2 === true) {
+        this.option = 1;
+      } else {
+        this.option = 0
+        alert("Login Successful!");
     }
+  }
 }

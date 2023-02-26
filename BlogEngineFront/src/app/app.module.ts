@@ -54,7 +54,7 @@ import { ComentsService } from 'src/services/coments.service';
     RouterModule.forRoot([
       {path: 'register', component: RegisterComponent},
       {path: 'login', component: LoginComponent},
-      {path: 'home/post-add', component: PostComponent},
+      {path: 'home/post-add', component: PostComponent,  canActivate: [AuthGuardService]},
       {path: 'home/post-edit/:id', component: PostComponent},
       {path: 'home', component: HomeComponent}, //, canActivate: [AuthGuardService]},
       {path: '',   redirectTo: 'home', pathMatch: 'full'},

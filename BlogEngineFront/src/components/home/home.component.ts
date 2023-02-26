@@ -1,17 +1,21 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { Post } from 'src/models/post.model';
 import { HomeService } from 'src/services/home.service';
 import { IPost } from 'src/components/post/post.class';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthGuardService } from 'src/services/auth-guard.service';
 
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'], 
+  
 })
+
 export class HomeComponent implements OnInit{
+
 
   posts: any
   postsForm: any
@@ -24,13 +28,16 @@ export class HomeComponent implements OnInit{
   constructor(
     private fb: FormBuilder,
     private homeService: HomeService,
+    private authGuardService: AuthGuardService
     
   
    ) { }
 
   async ngOnInit() {
 
+    this.authGuardService.canActivate();
     this.getData();
+    
   }
 
   public async deletePost(postId: string) {
@@ -51,5 +58,3 @@ export class HomeComponent implements OnInit{
      });
     }
   }
-
-

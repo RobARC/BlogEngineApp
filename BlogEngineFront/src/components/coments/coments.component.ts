@@ -53,7 +53,7 @@ export class ComentsComponent implements OnInit{
       this.comentsForm = this.posts
 
       //console.log(this.comentsForm[0].id);
-      console.log(this.comentsForm);
+      //console.log(this.comentsForm);
       
 
      for (let i = 0; i < this.comentsForm.length; i++) {
@@ -65,13 +65,13 @@ export class ComentsComponent implements OnInit{
      }
 
      this.coments = this.resp2;
-     console.log(this.resp2);
+     //console.log(this.resp2);
 
      for(let i = 0; i < this.resp2.length -1; i++) {
       if(this.resp2[i].id !== this.coments[i + 1].id   )
       this.resp3.push(this.coments[i]);
      }
-     console.log(this.resp3);
+     //console.log(this.resp3);
 
 
       //console.log(resp);
